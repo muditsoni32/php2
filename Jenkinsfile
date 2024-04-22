@@ -4,7 +4,7 @@ pipeline {
     environment {
         DEPLOY_SERVER = 'ec2-user@18.206.147.42'  // SSH address of the target EC2 instance
         DEPLOY_PATH = '/var/www/html/'            // Path where the PHP files will be served
-        KEY_CREDENTIALS = '4626ae65-a68c-4c09-90b3-684720aa9217' // ID of Jenkins credentials for SSH
+        KEY_CREDENTIALS = 'mudit_test' // ID of Jenkins credentials for SSH
     }
 
     stages {
