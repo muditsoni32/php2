@@ -16,7 +16,7 @@ pipeline {
                 // Push the Docker image to a Docker registry (if needed)
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerregistry') {
-                        docker.image('my-php-app:latest').push()
+                        docker.image('my-php-app:v1').push()
                     }
                 }
             }
