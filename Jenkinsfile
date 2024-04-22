@@ -12,7 +12,7 @@ pipeline {
             steps {
                 script {
                     // Install PHP and required packages
-                    sh 'sudo yum install -y php php-cli php-mysqlnd'
+                    sh 'yum install -y php php-cli php-mysqlnd'
                     // Additional packages may be required depending on your application's dependencies
                 }
             }
