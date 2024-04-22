@@ -11,13 +11,16 @@ pipeline {
             }
         }
 
-        stage('Push Docker Image') {
+        stage('Tag and Push Docker Image') {
             steps {
-                // Push the Docker image to a Docker registry (if needed)
+                // Tag the Docker image
                 script {
-                    docker image tag my-php-app:latest muditsoni32/my-php-app:latest
+                    docker.image('my-php-app:latest').tag 'muditsoni32/my-php-app:latest'
+                }
+                // Push the Docker image to a Docker registry
+                script {
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerregistry') {
-                        docker.image('my-php-app:v1').push()
+                        docker.image('muditsoni32/my-php-app:latest').push()
                     }
                 }
             }
@@ -29,8 +32,8 @@ pipeline {
                 script {
                     sshagent(credentials: ['mudit_test']) {
                         sh '''
-                            ssh ec2-user@18.206.147.42 "docker pull my-php-app:latest && \
-                            docker run -d --name my-php-app -p 80:80 my-php-app:latest"
+                            ssh ec2-user@18.206.147.42 "docker pull muditsoni32/my-php-app:latest && \
+                            docker run -d --name my-php-app -p 80:80 muditsoni32/my-php-app:latest"
                         '''
                     }
                 }
