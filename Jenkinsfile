@@ -6,18 +6,16 @@ pipeline {
             steps {
                 // Build the Docker image using the provided Dockerfile
                 script {
-                   docker.build('my-php-app:latest', '-f Dockerfile .')
+                    def image = docker.build('my-php-app:latest', '-f Dockerfile .')
+                    image.tag('muditsoni32/my-php-app:latest')
+                    image.push()
                 }
             }
         }
 
         stage('Tag and Push Docker Image') {
             steps {
-                // Tag the Docker image
-                script {
-                    docker.withTag('muditsoni32/my-php-app:latest').push('my-php-app:latest')
-                }
-                // Push the Docker image to a Docker registry
+                // Tag and Push the Docker image to a Docker registry
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerregistry') {
                         docker.image('muditsoni32/my-php-app:latest').push()
