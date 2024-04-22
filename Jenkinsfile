@@ -8,6 +8,13 @@ pipeline {
     }
 
     stages {
+        stage('Restart SSH Agent') {
+            steps {
+                sh 'eval $(ssh-agent -k)'
+                sh 'eval $(ssh-agent)'
+            }
+        }
+
         stage('Checkout') {
             steps {
                 // Check out source code from Git
