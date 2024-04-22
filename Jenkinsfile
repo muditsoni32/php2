@@ -15,7 +15,7 @@ pipeline {
             steps {
                 // Push the Docker image to a Docker registry (if needed)
                 script {
-                    docker.withRegistry('https://hub.docker.com/', 'dockerregistry') {
+                    docker.withRegistry('https://hub.docker.com', 'dockerregistry') {
                         docker.image('my-php-app:latest').push()
                     }
                 }
@@ -26,7 +26,7 @@ pipeline {
             steps {
                 // SSH into the target server and run the Docker container
                 script {
-                    sshagent(credentials: ['ssh-key-id']) {
+                    sshagent(credentials: ['mudit_test']) {
                         sh '''
                             ssh ec2-user@18.206.147.42 "docker pull my-php-app:latest && \
                             docker run -d --name my-php-app -p 80:80 my-php-app:latest"
