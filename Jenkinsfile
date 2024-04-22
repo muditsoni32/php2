@@ -15,7 +15,7 @@ pipeline {
             steps {
                 // Tag the Docker image
                 script {
-                    docker.image('my-php-app:latest').tag 'muditsoni32/my-php-app:latest'
+                    docker.image('my-php-app:latest').tag("muditsoni32/my-php-app:latest")
                 }
                 // Push the Docker image to a Docker registry
                 script {
