@@ -11,7 +11,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Check out source code from Git
-                git url: 'https://github.com/yourusername/your-php-repo.git', branch: 'main'
+                git url: 'https://github.com/muditsoni32/php.git', branch: 'main'
             }
         }
 
@@ -21,7 +21,7 @@ pipeline {
                 sshagent(credentials: [env.KEY_CREDENTIALS]) {
                     script {
                         sh """
-                        rsync -avz --delete ./* ${DEPLOY_SERVER}:${DEPLOY_PATH}
+                        sudo rsync -avz --delete ./* ${DEPLOY_SERVER}:${DEPLOY_PATH}
                         """
                     }
                 }
