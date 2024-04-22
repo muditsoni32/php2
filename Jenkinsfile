@@ -8,6 +8,16 @@ pipeline {
     }
 
     stages {
+        stage('Install PHP') {
+            steps {
+                script {
+                    // Install PHP and required packages
+                    sh 'sudo yum install -y php php-cli php-mysqlnd'
+                    // Additional packages may be required depending on your application's dependencies
+                }
+            }
+        }
+
         stage('Checkout') {
             steps {
                 // Check out source code from Git
@@ -21,7 +31,7 @@ pipeline {
                 sshagent(credentials: [env.KEY_CREDENTIALS]) {
                     script {
                         sh """
-                        sudo rsync -avz --delete ./* ${DEPLOY_SERVER}:${DEPLOY_PATH}
+                        rsync -avz --delete ./* ${DEPLOY_SERVER}:${DEPLOY_PATH}
                         """
                     }
                 }
@@ -38,4 +48,3 @@ pipeline {
         }
     }
 }
-
