@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'myLocalPHPAgent' }  // Label of your Jenkins node set up for EC2
+    agent any // Label of your Jenkins node set up for EC2
 
     environment {
         DEPLOY_SERVER = 'ec2-user@18.206.147.42'  // SSH address of the target EC2 instance
