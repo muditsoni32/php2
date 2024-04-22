@@ -6,7 +6,7 @@ pipeline {
             steps {
                 // Build the Docker image using the provided Dockerfile
                 script {
-                   docker.build('my-php-app:v1', '-f Dockerfile .')
+                   docker.build('my-php-app:latest', '-f Dockerfile .')
                 }
             }
         }
@@ -15,6 +15,7 @@ pipeline {
             steps {
                 // Push the Docker image to a Docker registry (if needed)
                 script {
+                    docker image tag my-php-app:latest muditsoni32/my-php-app:latest
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerregistry') {
                         docker.image('my-php-app:v1').push()
                     }
