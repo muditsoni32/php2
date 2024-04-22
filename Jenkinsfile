@@ -6,7 +6,7 @@ pipeline {
             steps {
                 // Build the Docker image using the provided Dockerfile
                 script {
-                   docker.build('my-php-app:latest', '-f Dockerfile .')
+                   docker.build('my-php-app:v1', '-f Dockerfile .')
                 }
             }
         }
