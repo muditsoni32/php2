@@ -7,7 +7,7 @@ pipeline {
                 // Build the Docker image using the provided Dockerfile
                 script {
                     def image = docker.build('my-php-app:latest', '-f Dockerfile .')
-                    image.tag('muditsoni32/my-php-app:latest')
+                    docker tag my-php-app:latest muditsoni32/my-php-app:latest
                     image.push()
                 }
             }
@@ -28,7 +28,7 @@ pipeline {
             steps {
                 // SSH into the target server and run the Docker container
                 script {
-                    sshagent(credentials: ['mudit_test']) {
+                    sshagent(credentials: ['mudit_key']) {
                         sh '''
                             ssh ec2-user@18.206.147.42 "docker pull muditsoni32/my-php-app:latest && \
                             docker run -d --name my-php-app -p 80:80 muditsoni32/my-php-app:latest"
