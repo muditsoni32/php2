@@ -28,7 +28,7 @@ RUN apt-get update && \
 COPY nginx.conf /etc/nginx/conf.d/
 
 # Copy your PHP application files into the working directory (if needed)
-# COPY . /var/www/html
+COPY index.php /var/www/html
 
 # Expose port 80
 EXPOSE 80
