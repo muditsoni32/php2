@@ -1,6 +1,12 @@
 # Use PHP 8.0 base image
 FROM php:8.0
 
+# Install NGINX
+RUN apt-get update && \
+    apt-get install -y nginx && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 # Set working directory
 WORKDIR /var/www/html
 
@@ -18,11 +24,14 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+# Copy NGINX configuration file
+COPY nginx.conf /etc/nginx/nginx.conf
+
 # Copy your PHP application files into the working directory (if needed)
 # COPY . /var/www/html
 
-# Expose port 80 (if needed)
-# EXPOSE 80
+# Expose port 80
+EXPOSE 80
 
-# Command to run PHP application (if needed)
-# CMD ["php", "-S", "0.0.0.0:80"]
+# Command to run PHP application
+CMD ["nginx", "-g", "daemon off;"]
