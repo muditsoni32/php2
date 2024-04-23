@@ -7,6 +7,7 @@ WORKDIR /var/www/html
 # Install PHP extensions and dependencies
 RUN apt-get update && \
     apt-get install -y \
+        httpd \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
         libpng-dev \
