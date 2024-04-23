@@ -35,7 +35,7 @@ pipeline {
                     sshagent(credentials: ['mudit_key']) {
                         sh '''
                             ssh -o StrictHostKeyChecking=no ec2-user@18.206.147.42 \
-                            ssh ec2-user@18.206.147.42 "docker pull muditsoni32/my-php-app:latest && \
+                            "docker pull muditsoni32/my-php-app:latest && \
                             docker run -d --name my-php-app -p 80:80 muditsoni32/my-php-app:latest"
                         '''
                     }
