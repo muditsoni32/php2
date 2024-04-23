@@ -25,7 +25,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Copy NGINX configuration file
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY nginx.conf /etc/nginx/conf.d/
 
 # Copy your PHP application files into the working directory (if needed)
 # COPY . /var/www/html
