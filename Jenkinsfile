@@ -1,6 +1,10 @@
 pipeline {
     agent any // Use any available Jenkins agent
 
+    environment {
+        DOCKER_CREDENTIALS_ID = 'dockerregistry' // ID of Jenkins credentials for Docker Hub
+    }
+
     stages {
         stage('Build Docker Image') {
             steps {
@@ -16,7 +20,7 @@ pipeline {
             steps {
                 // Tag and Push the Docker image to a Docker registry
                 script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'dockerregistry') {
+                    docker.withRegistry('https://registry.hub.docker.com', DOCKER_CREDENTIALS_ID) {
                         sh "docker push muditsoni32/my-php-app:latest"
                     }
                 }
