@@ -8,7 +8,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Set working directory
-WORKDIR /var/www/html
+WORKDIR /var/www/
 
 # Install PHP extensions and dependencies
 RUN apt-get update && \
@@ -28,7 +28,7 @@ RUN apt-get update && \
 COPY nginx.conf /etc/nginx/conf.d/
 
 # Copy your PHP application files into the working directory (if needed)
-COPY index.php /var/www/html
+COPY hello.php /var/www/
 
 # Expose port 80
 EXPOSE 80
