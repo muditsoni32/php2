@@ -7,7 +7,7 @@ pipeline {
                 // Build the Docker image using the provided Dockerfile
                 script {
                     def image = docker.build('my-php-app:latest', '-f Dockerfile .')
-                    docker tag my-php-app:latest muditsoni32/my-php-app:latest
+                    sh "docker tag my-php-app:latest muditsoni32/my-php-app:latest"
                     image.push()
                 }
             }
