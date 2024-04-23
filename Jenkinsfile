@@ -17,7 +17,7 @@ pipeline {
                 // Tag and Push the Docker image to a Docker registry
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerregistry') {
-                        sh "docker login -u "muditsoni32@gmail.com" -p "mudit#@12" docker.io
+                        sh "docker login -u "muditsoni32" -p "mudit#@12" docker.io
                         sh "docker push muditsoni32/my-php-app:latest"
                     }
                 }
