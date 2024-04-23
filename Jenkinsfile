@@ -8,7 +8,6 @@ pipeline {
                 script {
                     def image = docker.build('my-php-app:latest', '-f Dockerfile .')
                     sh "docker tag my-php-app:latest muditsoni32/my-php-app:latest"
-                    sh "docker push muditsoni32/my-php-app:latest"
                 }
             }
         }
@@ -18,7 +17,7 @@ pipeline {
                 // Tag and Push the Docker image to a Docker registry
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerregistry') {
-                        docker.image('muditsoni32/my-php-app:latest').push()
+                        sh "docker push muditsoni32/my-php-app:latest"
                     }
                 }
             }
