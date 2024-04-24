@@ -1,5 +1,5 @@
 # Use PHP 8.0 base image
-FROM ubuntu
+FROM ubuntu:20.04
 
 # Install NGINX
 RUN apt-get update && \
