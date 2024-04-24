@@ -9,6 +9,7 @@ RUN apt-get update && \
 
 # Set working directory
 WORKDIR /var/www/
+RUN rm -rf /etc/nginx/sites-enabled/default
 
 # Install PHP extensions and dependencies
 RUN apt-get update && \
