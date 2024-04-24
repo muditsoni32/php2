@@ -50,4 +50,4 @@ COPY index.php /var/www/
 EXPOSE 80 9000
 
 # Command to run the PHP application
-CMD ["nginx", "-g", "daemon off;"]
+CMD service php8.0-fpm start && nginx -g "daemon off;"
