@@ -23,7 +23,7 @@ RUN rm -rf /etc/nginx/sites-enabled/default
 
 # Install PHP extensions and dependencies
 RUN apt-get update && \
-    apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng-dev libzip-dev unzip && \
+    apt-get install -y libfreetype6-dev libjpeg-dev libpng-dev libzip-dev unzip && \
     docker-php-ext-configure gd --with-freetype --with-jpeg && \
     docker-php-ext-install -j$(nproc) gd pdo_mysql mysqli zip && \
     apt-get clean && \
