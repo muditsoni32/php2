@@ -1,9 +1,10 @@
 # Use PHP 8.0 base image
-FROM php:8.0-fpm
+FROM ubuntu
 
 # Install NGINX
 RUN apt-get update && \
     apt-get install -y nginx && \
+    apt-get install -y php8.0-fpm php8.0 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
