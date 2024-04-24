@@ -44,7 +44,7 @@ COPY nginx.conf /etc/nginx/sites-enabled/
 RUN service php8.0-fpm start
 
 # Copy your PHP application files into the working directory (if needed)
-COPY hello.php /var/www/
+COPY index.php /var/www/
 
 # Expose ports for HTTP and PHP-FPM
 EXPOSE 80 9000
