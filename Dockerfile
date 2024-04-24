@@ -1,5 +1,5 @@
 # Use PHP 8.0 base image
-FROM php:8.0
+FROM php:8.0-fpm
 
 # Install NGINX
 RUN apt-get update && \
