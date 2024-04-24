@@ -41,6 +41,8 @@ RUN apt-get install -y \
 # Copy NGINX configuration file
 COPY nginx.conf /etc/nginx/sites-enabled/
 
+RUN service php8.0-fpm start
+
 # Copy your PHP application files into the working directory (if needed)
 COPY hello.php /var/www/
 
