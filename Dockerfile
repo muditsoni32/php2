@@ -32,6 +32,6 @@ COPY hello.php /var/www/
 
 # Expose port 80
 EXPOSE 80
-
+EXPOSE 9000
 # Command to run PHP application
 CMD ["nginx", "-g", "daemon off;"]
