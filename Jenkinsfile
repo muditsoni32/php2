@@ -10,7 +10,7 @@ pipeline {
             steps {
                 // Build the Docker image using the provided Dockerfile
                 script {
-                    def image = docker.build('my-php-app:latest', '-f Dockerfile .')
+                    def image = docker.build('my-php2-app:latest', '-f Dockerfile .')
                     sh "docker tag my-php-app:latest muditsoni32/my-php-app:latest"
                     
                 }
@@ -22,7 +22,7 @@ pipeline {
                 // Tag and Push the Docker image to a Docker registry
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', DOCKER_CREDENTIALS_ID) {
-                        docker.image('muditsoni32/my-php-app:latest').push()
+                        docker.image('muditsoni32/my-php2-app:latest').push()
                     }
                 }
             }
@@ -35,8 +35,8 @@ pipeline {
                     sshagent(credentials: ['mudit_key']) {
                         sh '''
                             ssh -o StrictHostKeyChecking=no ec2-user@18.206.147.42 \
-                            "sudo docker pull muditsoni32/my-php-app:latest && \
-                            sudo docker run -d --name my-php-app -p 80:80 muditsoni32/my-php-app:latest"
+                            "sudo docker pull muditsoni32/my-php2-app:latest && \
+                            sudo docker run -d --name my-php-app -p 80:80 muditsoni32/my-php2-app:latest"
                         '''
                     }
                 }
