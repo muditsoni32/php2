@@ -30,5 +30,5 @@ COPY index.php /var/www/html/
 # Expose ports for HTTP and PHP-FPM
 EXPOSE 80 9000
 
-# Command to run the PHP application with NGINX
-CMD systemctl start nginx && php-fpm && tail -f /var/log/nginx/access.log
+# Start NGINX and PHP-FPM
+CMD nginx && php-fpm && tail -f /var/log/nginx/access.log
