@@ -13,7 +13,7 @@ WORKDIR /var/www/html
 RUN rm -rf /etc/nginx/conf.d/default.conf
 
 # Copy NGINX configuration file
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY nginx.conf /etc/nginx/conf.d/
 
 # Install PHP extensions and dependencies
 RUN yum install -y \
