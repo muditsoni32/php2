@@ -27,7 +27,7 @@ pipeline {
                         sh '''
                         ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${REMOTE_HOST} \
                             "cd /home/ec2-user/ && \
-                             sudo docker build -t my-php-app:latest -f Dockerfile . && \
+                             sudo docker build -t my-php-app2:latest -f Dockerfile . && \
                              sudo docker tag my-php-app2:latest muditsoni32/my-php-app2:latest"
                         '''
                     }
@@ -58,7 +58,7 @@ pipeline {
                         sh '''
                         ssh -o StrictHostKeyChecking=no ec2-user@18.206.147.42 \
                             "sudo docker pull muditsoni32/my-php-app2:latest && \
-                            sudo docker run -d --name my-php-app1 -p 80:80 muditsoni32/my-php-app2:latest"
+                            sudo docker run -d --name my-php-app2 -p 80:80 muditsoni32/my-php-app2:latest"
                         '''
                     }
                 }
