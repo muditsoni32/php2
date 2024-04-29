@@ -7,6 +7,7 @@ RUN yum install -y nginx php php-fpm && \
     rm -rf /var/cache/yum
 
 # Set the working directory
+RUN mkdir -p /run/php-fpm
 WORKDIR /var/www/html
 
 # Remove default NGINX configuration
