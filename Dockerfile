@@ -47,7 +47,7 @@ RUN service php8.0-fpm start
 COPY index.php /var/www/
 
 # Expose ports for HTTP and PHP-FPM
-EXPOSE 80 9000
+EXPOSE 80 9000 81
 
 # Command to run the PHP application
 CMD service php8.0-fpm start && nginx -g "daemon off;"
