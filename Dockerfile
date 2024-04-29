@@ -8,7 +8,7 @@ RUN yum install -y nginx php php-fpm && \
 
 # Set the working directory
 RUN mkdir -p /run/php-fpm
-WORKDIR /var/www/html
+WORKDIR /usr/share/nginx/html/
 
 # Remove default NGINX configuration
 RUN rm -rf /etc/nginx/conf.d/default.conf
@@ -26,10 +26,10 @@ RUN yum install -y \
     rm -rf /var/cache/yum
 
 # Copy your PHP application files into the working directory (if needed)
-COPY index.php /var/www/html/
+COPY index.php /usr/share/nginx/html/
 
 # Expose ports for HTTP and PHP-FPM
-EXPOSE 80 9000
+EXPOSE 80 9000 81
 
 # Start NGINX and PHP-FPM
 CMD nginx && php-fpm && tail -f /var/log/nginx/access.log
